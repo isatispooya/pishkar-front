@@ -1,0 +1,1777 @@
+@font-face {
+    font-family: 'IranNastaliq';
+    src: url('../../public/font/IranNastaliq.eot');
+    src: url('../../public/font/IranNastaliq.eot?#iefix') format('embedded-opentype'),
+        url('../../public/font/IranNastaliq.woff2') format('woff2'),
+        url('../../public/font/IranNastaliq.woff') format('woff'),
+        url('../../public/font/IranNastaliq.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'light';
+    src: url(../../public/font/peydaWeb-light.eot) format('eot'), url(../../public/font/peydaWeb-light.woff) format('woff');
+}
+@font-face {
+    font-family: 'extralight';
+    src: url(../../public/font/peydaWeb-extralight.eot), url(../../public/font/peydaWeb-extralight.woff) format('woff');
+}
+@font-face {
+    font-family: 'thin';
+    src: url(../../public/font/PeydaWeb-Thin.eot), url(../../public/font/PeydaWeb-Thin.woff) format('woff');
+}
+@font-face {
+    font-family: 'Regular';
+    src: url(../../public/font/PeydaWeb-Regular.eot), url(../../public/font/PeydaWeb-Regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'Medium';
+    src: url(../../public/font/PeydaWeb-Medium.eot), url(../../public/font/PeydaWeb-Medium.woff) format('woff');
+}
+@font-face {
+    font-family: 'SemiBold';
+    src: url(../../public/font/PeydaWeb-SemiBold.eot), url(../../public/font/PeydaWeb-SemiBold.woff) format('woff');
+}
+@font-face {
+    font-family: 'bold';
+    src: url(../../public/font/PeydaWeb-Bold.eot), url(../../public/font/PeydaWeb-Bold.woff) format('woff');
+}
+@font-face {
+    font-family: 'extrabold';
+    src: url(../../public/font/PeydaWeb-ExtraBold.eot), url(../../public/font/PeydaWeb-ExtraBold.eot) format('woff');
+}
+@font-face {
+    font-family: 'black';
+    src: url(../../public/font/PeydaWeb-Black.eot), url(../../public/font/PeydaWeb-Black.woff) format('woff');
+}
+
+@import  "../../node_modules/tabulator-tables/dist/css/tabulator.min.css";
+
+$clrA:rgb(50,50,50);
+$clrB:rgb(200,200,200);
+$colorText1: rgb(124, 129, 150);
+$colorText2: rgb(42, 57, 119);
+$colorBase1:#6666cc;
+$colorBase2:#333399;
+$colorBase3:#eaeaf5;
+$colorBase4:#d5d5f0;
+$colorBase5:#f7f7fc;
+$colorBase6:#9292c9;
+$colorBase7: #b4b4da;
+$colorBase8: #993333;
+$colorBase9: #339933;
+$colorBase10: #ada027;
+$colorBase11: #000000;
+$colorBase12: #e08610;
+$colorBase13: #ebc700;
+$colorBase14: #993333;
+
+$colorfidip1:#2496d3;
+
+@mixin gradientBase() {background: linear-gradient(#afafe3,#d5d4ef);}
+@mixin inputStandard() {
+    border: 0px;
+    height: 28px;    width: 220px;
+    margin: 12px 0px;
+    border-radius: 5px;
+    &:focus{outline: 2px $colorBase2 solid;}
+    font-family: 'Regular';
+    text-align: center;
+}
+@mixin buttonStandard {
+    background: $colorBase2;    color: #fff;
+    border: 0px; border-radius: 15px;
+    font-family: 'black';  text-align: center;  font-size: 9pt;
+    height: 28px;    width: 70px;
+    cursor: pointer;
+}
+
+html{
+    min-height: 100vh;
+    max-width: 100vw;
+
+}
+body{
+    min-height: 100vh;
+    max-width: 100vw;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.postive-toast{
+    font-family: 'Regular' !important;
+    background: $colorBase2 !important;
+    color: $colorBase5 !important;
+    direction: rtl !important;
+    .Toastify__progress-bar--success{
+        background: $colorBase5 !important;
+    }
+    svg{
+        fill: $colorBase5 !important;
+    }
+}
+.negetive-toast{
+    font-family: 'Regular' !important;
+    background: $colorBase14 !important;
+    color: $colorBase5 !important;
+    direction: rtl !important;
+    .Toastify__progress-bar--error{
+        background: $colorBase5 !important;
+    }
+    svg{
+        fill: $colorBase5 !important;
+    }
+}
+
+.warning-toast{
+    font-family: 'Regular' !important;
+    background: $colorBase12 !important;
+    color: $colorBase5 !important;
+    direction: rtl !important;
+    .Toastify__progress-bar--warning{
+        background: $colorBase5 !important;
+    }
+    svg{
+        fill: $colorBase5 !important;
+    }
+}
+
+.Alram{
+    position: absolute;
+    background-color: #fff;
+    top: 25%;
+    left: calc(50% - 125px);
+    width: 250px;
+    z-index: 3;
+    border: 1px $colorBase2 solid;
+    border-radius: 20px;
+    padding: 10px;
+    p{
+        font-family: 'Regular';
+        color: $colorBase2;
+        text-align: right;
+        white-space: pre-wrap;
+    }
+    button{
+        @include buttonStandard();
+        height: 20px;
+        width: 60px;
+        font-family: 'Regular';
+    }
+    .cancel{
+        background: $colorBase8;
+        margin-left: 15px;
+    }
+}
+
+.PopUp{
+    position: absolute;
+    background-color: #fff;
+    top: 25px;
+    left: calc(50% - 150px);
+    width: 300px;
+    z-index: 1;
+    border: 1px $colorBase2 solid;
+    >div{
+        display: flex;
+        flex-direction: column;
+        label{
+            display: flex;
+            flex-direction: row-reverse;
+            border-bottom: 1px $colorBase4 solid;
+            height: 30px;
+            align-items: center;
+            color: $colorBase1;
+            padding: 0px 5px;
+            p{
+                font-family: 'Regular';
+                margin: 0px;
+                font-size: 10pt;
+            }
+            span{
+                margin-left: 5px;
+            }
+            .answr{
+                margin-right: auto;
+                font-family: 'bold';
+            }
+            select{
+                border: 1px $colorBase6 solid;
+                border-radius: 5px;
+                height: 20px;
+                width: 150px;
+                margin: auto auto auto 0px;
+                text-align: center;
+                font-family: 'Regular' !important;
+                font-size: 10pt;
+                background: #f7f7fc;
+                color: $colorBase2;
+                &:focus{
+                    outline: 2px $colorBase2 solid;
+                }
+            }
+        }
+    }
+    button{
+        @include buttonStandard();
+        width:60px;
+        height: 20px;
+        font-size: 8pt;
+        font-family: 'Regular';
+        margin: 8px;
+    }
+}
+
+.Menu{
+    display: flex;
+    flex-direction: column;
+    border: 1px $colorBase2 solid;
+    .MnTtl{
+        background: $colorBase4;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            margin: 0px;
+            color: #fff;
+            font-family: 'Regular';
+        }
+        .cnt{
+            background-color: $colorBase4;
+            flex-grow: 2;
+            color: $colorBase2;
+            text-align: right;
+            padding: 0px 6px;
+        }
+        input{
+            width: 60%;
+            height: 14px;
+            margin-left: 4px;
+            background-color: mix($colorBase3, #fff , $weight: 50%);
+            border: 0px;
+            border-radius: 3px;
+            font-family: 'Regular';
+            font-size: 9pt;
+            text-align: center;
+            &:focus{
+                outline: 1px $colorBase1 solid;
+            }
+        }
+    }
+    .MnOpn{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 200px;
+        button{
+            background: transparent;
+            border: 0px;
+            font-family: 'SemiBold';
+            font-size: 10pt;
+            color: $colorBase2;
+            margin: 0px;
+            cursor: pointer;
+        }
+        .MainBtn{
+            display: flex;
+            flex-direction: row-reverse;
+            padding-right: 5px;
+            align-items: center;
+            margin: 3px 0px;
+            img{
+                height: 12px;
+            }
+        }
+        .SubBtns{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 35px;
+            margin-bottom: 10px;
+            .limit{
+                button{
+                    color: $colorBase6;
+                }
+            }
+        }
+    }
+    .MnCls{
+        flex-grow: 5;
+        background: $colorBase2;
+    }
+}
+
+.Desk{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+    .DM{
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        position: relative;
+        width: 100%;
+        padding-bottom: 30px;
+        flex: 5;
+
+    }
+}
+
+
+.Header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: $colorBase2;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    .Revival{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .notifiction{
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 10px;
+            background: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            transition: 0.5s;
+            overflow: hidden;
+            cursor: pointer;
+            .Description{
+                display:none;
+                text-overflow: clip;
+                white-space: nowrap;
+                p{
+                    font-family: 'Regular';
+                    font-size: 10pt;
+                    margin: 0px 3px 0px 3px;
+                }
+            }
+            .number{
+                margin: 0px 2px 3px 2px;
+            }
+            .ico{
+                font-size: 10pt;
+                vertical-align: bottom;
+                margin: 0px 0px 0px 0px;
+                position: relative;
+            }
+            &:hover{
+                width: 160px;
+                .number{
+                    display: none;
+                }
+                .ico{
+                    font-size: 14pt;
+                }
+                .Description{
+                    display:flex;
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+        .black{
+            p{color: $colorBase11;}
+        }
+        .Red{
+            p{color: $colorBase14;}
+        }
+        .Oreng{
+            p{color: $colorBase12;}
+        }
+        .Yellow{
+            p{color: $colorBase13;}
+        }
+    }
+    .ttlr{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        .nm{
+            display: flex;
+            flex-direction: column;
+            >h1{
+                font-family: 'IranNastaliq';
+                color: #fff;
+                margin: 0px 0px 0px 0px;
+                padding: 0px 20px 0px 0px;
+                font-size: 17pt;
+            }
+            >h2{
+                font-family: 'Regular';
+                color: #fff;
+                margin: 0px 0px 0px 0px;
+                padding: 0px 20px 0px 0px;
+                font-size: 8pt;
+            }
+        }
+
+        .brdrVrtcl{
+            border-left: 1px #fff solid;
+            margin: 0px 20px;
+            height: 50px;
+        }
+        >div{
+            display: flex;
+            flex-direction: column;
+            >h1{
+                margin: 0px;
+                font-family: 'Medium';
+                color: #fff;
+                font-size: 12pt;
+            }
+            >div{
+                display: flex;
+                flex-direction: row-reverse;
+                p{
+                    margin: 0px;
+                    font-family: 'Regular';
+                    font-size: 9pt;
+                    color: $colorBase4;
+                }
+            }
+        }
+    }
+    .btnhdr{
+        display: flex;
+        flex-direction: row-reverse;
+        .brdrVrtcl{
+            border-left: 1px #fff solid;
+            margin: 0px 10px;
+            height: 40px;
+        }
+        .ttlHd{
+            margin: 0px 0px 0px 10px;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            p{
+                margin: 0px 3px;
+                color: $colorBase4;
+                font-size: 9pt;
+            }
+        }
+        .BtnHd{
+            margin: 0px 10px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            cursor: pointer;
+            span{
+                font-size: 16pt;
+                margin: 0px;
+                color: #fff;
+            }
+            button{
+                cursor: pointer;
+                background: transparent;
+                border: 0px;
+                color: #fff;
+                font-family: 'Regular';
+                font-size: 10pt;
+                margin: 0px;
+                padding: 2px;
+            }
+        }
+        .MnUsr{
+            display: flex;
+            flex-direction: row;
+            color: #fff;
+            font-family: 'Medium';
+            font-size: 10pt;
+            margin:0px 10px;
+            position: relative;
+            align-items: center;
+            justify-content: space-around;
+            direction: rtl;
+            width: 100px;
+            cursor: pointer;
+            .Notification{
+                font-size: 15pt;
+                color: $colorBase2;
+                animation: notif 0.5s  0s alternate-reverse infinite;
+                margin: 0px 5px;
+            }
+
+            @keyframes notif {
+                to{color: #fff;}
+                
+            }
+            img{
+                width: 10px;
+                height: 8px;
+                margin: 0px 0px 0px 8px;
+            }
+            &:hover{
+                .MnUsr-Sb{
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 35px;
+                    background: #fff;
+                    border-radius: 5px;
+                    margin: 0px;
+                    box-shadow: 0px 0px 7px -1px $colorBase6;
+                    >div{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                    }
+                    p{
+                        padding: 5px 10px 5px 18px;
+                        margin: 0px;
+                        text-align: right;
+                        color: $colorBase2;
+                        border-radius: 5px;
+                        font-size: 9pt;
+                        &:hover{
+                            background: $colorBase6;
+                            color: #fff;
+                        }
+                    }
+                    >div{
+                        border-radius: 5px;
+                        &:hover{
+                            background: $colorBase6;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .MnUsr-Sb{
+                display: none;
+            }
+        }
+    }
+}
+
+.HomePage{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba($colorfidip1,0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    >img{
+        width: 100%;
+        z-index: 0;
+        opacity: 0.25;
+
+    }
+    .brd{
+        position: absolute;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        right: min(250px,20%);
+        .logo{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            img{
+                position: absolute;
+            }
+            .prt{
+                opacity: 0;
+            }
+            .prt1{
+                animation: pt1 3s 0s alternate infinite forwards;
+            }
+            .prt2{
+                animation: pt1 3s 0.5s alternate infinite forwards;
+            }
+            .prt3{
+                animation: pt1 3s 1s alternate infinite forwards;
+            }
+            .prt4{
+                animation: pt1 3s 1.5s alternate infinite forwards;
+            }
+            @keyframes pt1 {
+                20%{opacity: 0;}
+                35%{opacity: 100;}
+                70%{opacity: 100;}
+                85%{opacity: 0;}
+                
+            }
+        }
+        h1{
+            font-family: 'bold';
+            width: 270px;
+            text-align: center;
+            font-size: 13pt;
+            color: #fff;
+            padding: 6px;
+            background: $colorBase2;
+            border-radius: 8px;
+        }
+        a{
+            font-family: 'black';
+            color: $colorBase2;
+            font-size: 13pt;
+            text-decoration: none;
+        }
+
+    }
+
+    .FrmLgin{
+        position: absolute;
+        left: 15%;
+        z-index: 0;
+    }
+    .inpnmb{
+        display: flex;
+        flex-direction: column;
+        border: 1px #fff solid;
+        border-radius: 15px;
+        padding: 15px 55px;
+        background-color: rgba(255, 255, 255, 0.2);
+        h1{
+            font-family: 'Medium';
+            text-align: center;
+            font-size: 12pt;
+            color: $colorBase2;
+            margin: 30px 0px;
+            padding: 0px;
+        }
+        p{
+            font-family: 'bold';
+            color: $colorBase2;
+            font-size: 10pt;
+            text-align: center;
+            margin: 2px 0px;
+            padding: 0px;
+            text-align: center;
+
+        }
+        >div{
+            border-bottom: 1px #fff solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            input{
+                @include inputStandard();
+            }
+            .captcha{
+                width: 220px;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: stretch;
+                padding: 0px;
+                img{
+                    width: 80%;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+                button{
+                    border-top-left-radius:5px ;
+                    border-bottom-left-radius:5px ;
+                    border: 0px;
+                    width: 20%;
+                    margin: 0px;
+                    background: $colorBase3;
+                    color: $colorBase2;
+                    font-family: 'Regular';
+                    cursor: pointer;
+                    &:focus{
+                        outline: 2px $colorBase2 solid;
+                    }
+                }
+            }
+            >button{
+                @include buttonStandard();
+                margin: 15px;
+            }
+        }
+    .inpcd{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p{
+            font-size: 10pt;
+            cursor: pointer;
+        }
+        >div{
+            display: flex;
+            flex-direction: row;
+            p{
+                margin: 5px;
+                color: $colorBase1;
+            }
+        }
+    }
+    }
+}
+
+.LoaderConteiner{
+    position: fixed;
+    top: calc(50% - 65px);
+    left: calc(50% - 65px);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background: rgba($colorBase3 , 0.6);
+    padding: 25px 35px;
+    border-radius: 20px;
+    .lds-facebook{
+        div{
+            background: $colorBase1 !important;
+        }
+    }
+
+}
+
+
+.TblClms-check-square{
+    background-color: #263bb0;
+}
+.TblClms{
+    width: 10px;
+    height: 10px;
+    border: 1px solid #9c9c9c;
+    margin-right:10px;
+    border-radius: 3px;
+}
+
+.PgTabs{
+    width: calc(100% - 200px);
+    position: relative;
+    display: flex;
+    .react-tabs{
+        width: 100%;
+        .TbsDiv{
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            padding: 0px 10px;
+            background: $colorBase4;
+            border: 1px $colorBase2 solid;
+            border-bottom: 0px;
+            height: 20px;
+            border-radius: 8px 8px 0px 0px;
+            
+            button{
+                height: 15px;
+                background: transparent;
+                border: 0px;
+                font-size: 10pt;
+                font-family: 'Regular';
+                color: $colorBase2;
+                cursor: pointer;
+            }
+            p{
+                font-size: 10pt;
+                font-family: 'Regular';
+                color: $colorBase2;
+                margin: 0px;
+            }
+        }
+        .react-tabs__tab{
+            bottom:0px;
+            margin: 0px;
+            padding: 0px;
+
+        }
+        .react-tabs__tab-list{
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            height: 22px;
+            border-top: 1px $colorBase2 solid;
+            background: $colorBase4;
+            padding: 0px 5px 0px 0px;
+            margin: 0px 15px 0px 0px;
+
+        }
+        .react-tabs__tab-panel{
+            width: 100%;
+        }
+        .react-tabs__tab--selected{
+            border-radius: 0px;
+            background: $colorBase4;
+            border: 0px;
+            .TbsDiv{
+                background: $colorBase5;
+            }
+
+        }
+    }
+}
+.PgLine{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px $colorBase2 solid;
+    width: 100%;
+    .TtlHeader{
+        border: 1px $colorBase2 solid;
+        background: $colorBase4;
+        h1{
+            color: $colorBase2;
+            font-family: 'Regular';
+            font-size: 11pt;
+            padding: 0px 15px 0px 0px;
+            margin: 0px;
+            text-align: right;
+        }
+    }
+    .OnlyForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .alarm{
+            display: flex;
+            flex-direction: row-reverse;
+            >div{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            h1{
+                font-family: 'bold'; font-size: 25pt;color: $colorBase8;
+                margin: 10px 20px 10px 25px;
+                padding: 0px 10px 0px 0px;
+                border-right: 3px $colorBase8 solid;
+                width: 40px;
+                text-align: right;
+            }
+            h2{
+                font-family: 'medium'; font-size: 12pt;color: $colorBase2;
+                text-align: right;
+                margin: 0px;
+            }
+            p{
+                font-family: 'Regular'; font-size: 10pt;color: $colorBase1;
+                text-align: right;
+                margin: 0px;
+            }
+
+        }
+        .warrning{
+            display: flex;
+            flex-direction: row-reverse;
+            >div{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            h1{
+                font-family: 'bold'; font-size: 25pt;color: $colorBase10;
+                margin: 10px 20px 10px 25px;
+                padding: 0px 10px 0px 0px;
+                border-right: 3px $colorBase10 solid;
+                width: 40px;
+                text-align: right;
+
+            }
+            h2{
+                font-family: 'medium'; font-size: 12pt;color: $colorBase2;
+                text-align: right;
+                margin: 0px;
+            }
+            p{
+                font-family: 'Regular'; font-size: 10pt;color: $colorBase1;
+                text-align: right;
+                margin: 0px;
+            }
+        }
+        .Feild{
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+            border: 1px $colorBase2 solid;
+            border-right: 0px;
+            .FldName{
+                select{width: 180px;}
+            }
+            label{
+                border: 1px $colorBase4 solid;
+                border-top: 0px;
+                border-right: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: 210px;
+                justify-content: center;
+                p{
+                    color: $colorBase2;
+                    font-family: 'Regular';
+                    margin: 5px 15px 5px 0px;
+                    font-size: 10pt;
+                    text-align: right;
+                }
+                input, select{
+                    border: 1px $colorBase6 solid;
+                    border-radius: 5px;
+                    height: 20px;
+                    width: 100px;
+                    margin: 0px 10px 12px 0px;
+                    text-align: center;
+                    font-family: 'Regular';
+                    font-size: 10pt;
+                    background: #f7f7fc;
+                    &:focus{
+                        outline: 2px $colorBase2 solid;
+                    }
+                }
+                .inpMrg{
+                    display: flex;
+                    flex-direction: row-reverse;
+                    >span{
+                        color: $colorBase2;
+                        font-family: 'black';
+                        margin: 5px 15px 5px 0px;
+                        font-size: 10pt;
+                        text-align: right;
+                    }
+                    .del{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 20pt;
+                    }
+                }
+            }
+        }
+        .rowly{
+            flex-direction: column;
+            direction: rtl;
+            label{
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                div{
+                    display: flex;
+                    flex-direction: row !important;
+                    span{
+                        font-family: 'Regular' !important;
+                    }
+                }
+            }
+            .ttl{
+                justify-content: center;
+                p{
+                    margin: 0px 15px;
+                }
+            }
+        }
+        button{
+            @include buttonStandard();
+            margin: 20px auto;
+            width: 150px;
+        }
+    }
+    .FrmTbl{
+        .FormPlus{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px $colorBase6 solid;
+            border-radius: 5px;
+            position: absolute;
+            background: #fff;
+            width: max(50% , 300px);
+            min-height: auto;
+            max-height: max(50% , 400px);
+            z-index: 2;
+            right: calc(50% - max(25% , 150px));
+            top: 10px;
+            .FldPlus{
+                display: flex;
+                flex-direction: row-reverse;
+                flex-wrap: wrap;
+                position: relative;
+                width: 100%;
+                overflow: scroll;
+
+                &::-webkit-scrollbar{
+                    background: $colorBase5;
+                    width: 5px;
+                    height: 8px;
+                    border-radius: 5px;
+                }
+                &::-webkit-scrollbar-thumb{
+                    background: $colorBase4;
+                    width: 5px;
+                    height: 8px;
+                    border-radius: 5px;
+                }
+                label{
+                    border: 1px $colorBase4 solid;
+                    border-top: 0px;
+                    border-right: 0px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    width: calc(50% - 21px);
+                    padding: 0px 10px;
+                    button{
+                        @include buttonStandard();
+                        height: 20px;
+                        margin: 7px auto;
+                        a{
+                            color: #fff;
+                            text-decoration: none;
+                            font-size: 8pt;
+                            font-family: 'Regular';
+                        }
+                    }
+                    .subLbl{
+                        display: flex;
+                        flex-direction: row;
+                        span{
+                            color: $colorBase2;
+                            font-family: 'Thin';
+                            margin: 5px 2px 5px 0px;
+                            font-size: 10pt;
+                            text-align: right;
+                        }
+                    }
+                    p{
+                        color: $colorBase2;
+                        font-family: 'Regular';
+                        margin: 5px 15px 5px 0px;
+                        font-size: 10pt;
+                        text-align: right;
+                    }
+                    input, select{
+                        border: 1px $colorBase6 solid;
+                        border-radius: 5px;
+                        height: 20px;
+                        width: calc(70% - 12px);
+                        margin: 0px 10px 12px 0px;
+                        text-align: center;
+                        font-family: 'Regular';
+                        font-size: 10pt;
+                        background: #f7f7fc;
+                        &:focus{
+                            outline: 2px $colorBase2 solid;
+                        }
+                    }
+                    input[type=file]{
+                        border: 1px $colorBase6 solid;
+                        border-radius: 5px;
+                        height: 20px;
+                        width: 100px;
+                        margin: 0px 10px 12px 0px;
+                        text-align: center;
+                        font-family: 'Regular';
+                        font-size: 5pt;
+                        background: #f7f7fc;
+                        width: 160px;
+                        &:focus{
+                            outline: 2px $colorBase2 solid;
+                        }
+                        &::-webkit-file-upload-button{
+                            background: $colorBase2;
+                            height: 100%;
+                            width:40%;
+                            border: 0px;
+                            font-size: 5pt;
+                            font-family: 'Thin';
+                            color:#fff;
+                        }
+                    }
+                    .inpMrg{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        >span{
+                            color: $colorBase2;
+                            font-family: 'black';
+                            margin: 5px 15px 5px 0px;
+                            font-size: 10pt;
+                            text-align: right;
+                        }
+                        input{
+                            width: 80px;
+                        }
+                    }
+                }
+                .Add-Field{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    div{
+                        margin: 0px 15px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        span{
+                            font-size: 20pt;
+                            color: $colorBase2;
+                            margin: 0px;
+                        }
+                        p{
+                            text-align: center;
+                            margin: 0px;
+                        }
+                    }
+                }
+
+            }
+            .clander{
+                overflow: visible;
+            }
+            .BtnBx{
+                display: flex;
+                flex-direction: row;
+                .AplBtn{
+                    @include buttonStandard();
+                    margin: 10px 20px;
+                }
+                .CnlBtn{
+                    @include buttonStandard();
+                    margin: 10px 20px;
+                    background: $colorBase8;
+
+                }
+            }
+
+        }
+    }
+}
+
+.TblPlus{
+    .TblTools{
+        display: flex;
+        flex-direction: row-reverse;
+        background: $colorBase4;
+        border-top:1px $colorBase2 solid;
+        .RightTls, .LeftTls{
+            display: flex;
+            flex-direction: row;
+        }
+        .RightTls{
+            margin: 0px auto 0px 10px;
+            flex-wrap: wrap;
+
+            span{
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: center;
+                align-items: center;
+                >p{
+                    font-family: 'Regular';
+                    font-size: 9pt;
+                    margin: 0px;
+                }
+                color: $colorBase2;
+                font-size: 15pt;
+                &:hover{
+                    background-color: $colorBase6;
+                }
+            }
+        }
+    }   
+    .BtnTools{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin-right: 10px;
+        cursor: pointer;
+        p{
+            margin: 0px;
+            font-family: 'Regular';
+            color: $colorBase2;
+            margin-left: 10px;
+        }
+        img{
+            height: 20px;
+            margin: 0px 10px;
+        }
+        select{
+            border: 1px $colorBase6 solid;
+            border-radius: 5px;
+            height: 20px;
+            width: 150px;
+            text-align: center;
+            font-family: 'Regular';
+            font-size: 10pt;
+            background: #f7f7fc;
+            color: $colorBase2;
+            &:focus{
+                outline: 2px $colorBase2 solid;
+            }
+        }
+    }
+    .TlsDwnld{
+        align-items: center;
+        margin-left: 15px;
+        span{
+            font-family: 'Regular';
+            color: $colorBase2;
+            font-family: 12pt;
+        }
+        &:hover{
+            background: $colorBase6;
+        }
+    }
+}
+
+.tabulator{
+    .tabulator-selected{
+        background-color: $colorBase2!important;
+        color: $colorBase3;
+    }
+    
+    .tabulator-data-tree-control{
+        background: #fff !important;
+        border: 1px $colorBase6 solid !important;
+    }
+    .tabulator-data-tree-control-expand{
+        background: $colorBase6 !important;
+        &::after{
+            background: $colorBase6 !important;
+        }
+    }
+
+    border: 1px $colorBase2 solid;
+    .TblBtnDynEdt{
+    font-family: 'black';
+    }
+    .tabulator-header{
+        color: $colorBase2;
+        font-family: 'Regular';
+        background: $colorBase4;
+        .tabulator-col{
+            background: $colorBase4;
+            border: 0px $colorBase7 solid;
+            border-left: 1px $colorBase7 solid;
+            &:hover{
+                background: $colorBase3 !important;
+            }
+            .tabulator-header-filter{
+                width: 70%;
+                margin: auto auto;
+            }
+            input{
+                border: 1px $colorBase6 solid;
+                border-radius: 5px;
+                height: 20px;
+                text-align: center;
+                font-family: 'Regular';
+                font-size: 10pt;
+                background: #f7f7fc;
+            }
+        }
+    }
+    .tabulator-table{
+        .tabulator-row-even{
+           background: $colorBase3;
+            }
+            .tabulator-row{
+                &:hover{
+                    background: $colorBase7 !important;
+                }
+            }
+            .tabulator-cell{
+                font-family: 'Regular';
+            }
+        }
+    }
+    .tabulator .tabulator-footer .tabulator-calcs-holder .tabulator-row{
+        background: $colorBase3 !important;
+    }
+    .tabulator-footer-contents{
+        background: $colorBase4;
+        label{
+            color: $colorBase2;
+        }
+
+}
+
+.Berif{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto 0px;
+
+    .BerifUp{
+        .BerifRight{
+            .Icn{
+                border-top-right-radius: 360px;
+            }
+        }
+        .BerifLeft{
+            .Icn{
+                border-top-left-radius: 360px;
+            }
+        }
+    }
+    .BerifDown{
+        .BerifRight{
+            .Icn{
+                border-bottom-right-radius: 360px;
+            }
+        }
+        .BerifLeft{
+            .Icn{
+                border-bottom-left-radius: 360px;
+            }
+        }
+    }
+
+    .BerifRight{
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+        flex-direction: row-reverse;
+        width: 550px;
+        margin-right: auto;
+
+        .Context{
+            text-align: right;
+            h1{
+                margin: 20px 60px 10px 0px;
+            }
+            p{
+                margin: 0px 80px 0px 0px;
+            }
+        }
+    }
+    .BerifLeft{
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+        flex-direction: row;
+        width: 550px;
+        margin-left: auto;
+
+
+        .Context{
+            text-align: right;
+            h1{
+                margin: 20px 0px 10px 60px;
+            }
+            p{
+                margin: 0px 30px 0px 80px;
+            }
+        }
+    }
+    >div{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 85%;
+        >div{
+            margin: 10px;
+            background: $colorBase3;
+            width:50%;
+            height: 180px;
+            display: flex;
+            justify-content: space-between;
+            .Context{
+                h1{
+                    font-family: 'Medium';
+                    font-size: 11pt;
+                    color: $colorBase2;
+                }
+                p{
+                    font-family: 'Regular';
+                    font-size: 11pt;
+                    color: $colorBase2;
+                }
+
+            }
+            .Icn{
+                height: 180px;
+                width: 180px;
+                background: $colorBase2;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                span{
+                    font-size: 35pt;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .Cntr{
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        margin: auto;
+        background: #fff;
+        z-index: 5;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        span{
+            font-size: 30pt;
+            color: $colorBase2;
+        }
+        p{
+            font-family: 'Medium';
+            font-size: 12pt;
+            color: $colorBase2;
+            margin: 0px;
+        }
+    }
+}
+
+.DshBrd{
+    display: flex;
+    flex-direction: column;
+    .TL{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        background: $colorBase4;
+        label{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            margin: 2px 10px;
+            p{
+                margin: 0px;
+                font-family: 'Regular';
+                color: $colorBase2;
+            }
+            select{
+                border: 1px $colorBase6 solid;
+                border-radius: 5px;
+                height: 20px;
+                width: 150px;
+                text-align: center;
+                font-family: 'Regular';
+                font-size: 10pt;
+                background: #f7f7fc;
+                color: $colorBase2;
+                &:focus{
+                    outline: 2px $colorBase2 solid;
+                }
+            }
+        }
+
+    border-bottom: 1px $colorBase2 solid;
+
+    }
+    .RW{
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 0px;
+        height: 300px;
+        width: 100%;
+        border-bottom: 1px $colorBase2 solid;
+        align-items: stretch;
+        .Title{
+            font-family: 'bold';
+            font-size: 12pt;
+            color: $colorBase3;
+            margin: 0px;
+            background: rgba($colorBase2, 0.7);
+            writing-mode: vertical-rl;
+            text-align: center;
+        }
+        .BX{
+            flex: 1;
+            border-right:1px $colorBase1 solid ;
+            display: flex;
+            flex-direction: column;
+            h1{
+                font-family: 'Regular';
+                font-size: 11pt;
+                color: $colorBase2;
+                text-align: center;
+                margin: 0px;
+                justify-self: start;
+            }
+            >.Field{
+                padding-left: 15px;
+                label{
+                    display: flex;
+                    flex-direction: row-reverse;
+                    height: 25px;
+                    justify-content: flex-end;
+                    align-items: center;
+                    p{
+                        font-family: 'Regular';
+                        color: $colorBase2;
+                        font-size: 10pt;
+                        margin: 0px;
+                    }
+                    select{
+                        border: 0px;
+                        font-family: 'Regular';
+                        font-size: 10pt;
+                        color: $colorBase1;
+                        border-bottom:0px $colorBase2 solid;
+                        margin: 0px;
+                        width: 75px;
+
+                    }
+                }
+            }
+
+            >.CHR{
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                >div{
+                    width: 50%;
+                }
+                .CHRTBL{
+                    display: flex;
+                    flex-direction: column;
+                    margin: auto 5px;
+                    >div{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        margin: 4px 0px;
+                        border-style: solid;
+                        border-width: 0px;
+                        border-bottom-width: 1px;
+                        
+                        .group{
+                            flex: 3;
+                            text-align: right;                            
+
+                        }
+                        .rate{
+                            flex: 1;
+                        }
+                        .amount{
+                            flex: 2;
+                        }
+                        p{
+                            font-family: 'Regular';
+                            font-size: 9pt;
+                            margin: 0px;
+
+                        }
+                    }
+                }
+
+
+            }
+            >.DIS{
+                flex: 1;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                .BLD{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    >div{
+                        span{
+                            font-family: 'Regular';
+                            font-size: 12pt;
+                            text-align: center;
+                            color: $colorBase2;
+                        }
+                        >p{
+                            margin: auto 0px;
+                            font-family: 'bold';
+                            font-size: 30pt;
+                            &.pos{color: $colorBase9;}
+                            &.neg{color: $colorBase8;}
+                            text-align: center;
+                        }
+                    }
+                }
+
+                .DTL{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    >div{
+                        display: flex;
+                        flex-direction: column;
+                        width: 150px;
+                        >p{
+                            font-family: 'Regular';
+                            font-size: 11pt;
+                            color: $colorBase2;
+                            margin: 0px;
+                            &.TT{
+                                text-align: right;
+                            }
+                            &.NM{
+                                text-align: left;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.Footer{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    bottom: 0px;
+    background: $colorBase2;
+    height: 35px;
+    display: flex;
+    flex-direction: row-reverse;
+    label{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        p{
+            color: #fff;
+            font-family: 'bold';
+            margin: 5px 15px 5px 0px;
+            font-size: 10pt;
+            text-align: right;
+        }
+        .InpBsc{
+            border: 1px $colorBase6 solid;
+            border-radius: 5px;
+            height: 16px;
+            text-align: center;
+            font-family: 'Regular';
+            font-size: 10pt;
+            background: #f7f7fc;
+            margin-right: 10px;
+            width: 100px;
+            color: $colorBase2;
+        }
+    }
+}
+
+.NoAccess{
+    display: flex;
+    flex-direction: column;
+    margin: 55px 0px 0px 0px;
+    span{
+        text-align: center;
+        font-family: 'bold';
+        font-size: 60pt;
+        color: $colorBase8;
+        margin: 0px
+    };
+    h1{
+        text-align: center;
+        font-family: 'bold';
+        font-size: 17pt;
+        color: $colorBase8;
+        margin: 0px
+    }
+}
+
+.MnLd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .lds-facebook {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        div {
+            display: inline-block;
+            position: absolute;
+            left: 8px;
+            width: 16px;
+            background: $colorBase6;
+            animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+            &:nth-child(1) {
+                left: 8px;
+                animation-delay: -0.24s;
+              }
+            &:nth-child(2) {
+                left: 32px;
+                animation-delay: -0.12s;
+              }
+            &:nth-child(3) {
+                left: 56px;
+                animation-delay: 0;
+              }
+          }
+      }
+      @keyframes lds-facebook {
+        0% {
+          top: 8px;
+          height: 64px;
+        }
+        50%, 100% {
+          top: 24px;
+          height: 32px;
+        }
+      }
+      
+}
+
+
+.Fld-FT{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    label{
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 0px 15px;
+
+        p{
+            margin: 0px;
+            font-family: 'Regular';
+            color: $colorBase2;
+        }
+        .InpBsc{
+            border: 1px $colorBase6 solid;
+            border-radius: 5px;
+            height: 16px;
+            text-align: center;
+            font-family: 'Regular';
+            font-size: 10pt;
+            background: #f7f7fc;
+            margin-right: 10px;
+            width: 90px;
+            color: $colorBase2;
+        }
+        .rmdp-wrapper{
+            font-family: 'Regular';
+        }
+        .rmdp-header-values{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

@@ -1,0 +1,1757 @@
+@import "../../node_modules/tabulator-tables/dist/css/tabulator.min.css";
+@font-face {
+  font-family: "IranNastaliq";
+  src: url("../../public/font/IranNastaliq.eot");
+  src: url("../../public/font/IranNastaliq.eot?#iefix") format("embedded-opentype"), url("../../public/font/IranNastaliq.woff2") format("woff2"), url("../../public/font/IranNastaliq.woff") format("woff"), url("../../public/font/IranNastaliq.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "light";
+  src: url(../../public/font/peydaWeb-light.eot) format("eot"), url(../../public/font/peydaWeb-light.woff) format("woff");
+}
+@font-face {
+  font-family: "extralight";
+  src: url(../../public/font/peydaWeb-extralight.eot), url(../../public/font/peydaWeb-extralight.woff) format("woff");
+}
+@font-face {
+  font-family: "thin";
+  src: url(../../public/font/PeydaWeb-Thin.eot), url(../../public/font/PeydaWeb-Thin.woff) format("woff");
+}
+@font-face {
+  font-family: "Regular";
+  src: url(../../public/font/PeydaWeb-Regular.eot), url(../../public/font/PeydaWeb-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Medium";
+  src: url(../../public/font/PeydaWeb-Medium.eot), url(../../public/font/PeydaWeb-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: "SemiBold";
+  src: url(../../public/font/PeydaWeb-SemiBold.eot), url(../../public/font/PeydaWeb-SemiBold.woff) format("woff");
+}
+@font-face {
+  font-family: "bold";
+  src: url(../../public/font/PeydaWeb-Bold.eot), url(../../public/font/PeydaWeb-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "extrabold";
+  src: url(../../public/font/PeydaWeb-ExtraBold.eot), url(../../public/font/PeydaWeb-ExtraBold.eot) format("woff");
+}
+@font-face {
+  font-family: "black";
+  src: url(../../public/font/PeydaWeb-Black.eot), url(../../public/font/PeydaWeb-Black.woff) format("woff");
+}
+html {
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  padding: 0px;
+  margin: 0px;
+}
+
+.postive-toast {
+  font-family: "Regular" !important;
+  background: #333399 !important;
+  color: #f7f7fc !important;
+  direction: rtl !important;
+}
+.postive-toast .Toastify__progress-bar--success {
+  background: #f7f7fc !important;
+}
+.postive-toast svg {
+  fill: #f7f7fc !important;
+}
+
+.negetive-toast {
+  font-family: "Regular" !important;
+  background: #993333 !important;
+  color: #f7f7fc !important;
+  direction: rtl !important;
+}
+.negetive-toast .Toastify__progress-bar--error {
+  background: #f7f7fc !important;
+}
+.negetive-toast svg {
+  fill: #f7f7fc !important;
+}
+
+.warning-toast {
+  font-family: "Regular" !important;
+  background: #e08610 !important;
+  color: #f7f7fc !important;
+  direction: rtl !important;
+}
+.warning-toast .Toastify__progress-bar--warning {
+  background: #f7f7fc !important;
+}
+.warning-toast svg {
+  fill: #f7f7fc !important;
+}
+
+.Alram {
+  position: absolute;
+  background-color: #fff;
+  top: 25%;
+  left: calc(50% - 125px);
+  width: 250px;
+  z-index: 3;
+  border: 1px #333399 solid;
+  border-radius: 20px;
+  padding: 10px;
+}
+.Alram p {
+  font-family: "Regular";
+  color: #333399;
+  text-align: right;
+  white-space: pre-wrap;
+}
+.Alram button {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  height: 20px;
+  width: 60px;
+  font-family: "Regular";
+}
+.Alram .cancel {
+  background: #993333;
+  margin-left: 15px;
+}
+
+.PopUp {
+  position: absolute;
+  background-color: #fff;
+  top: 25px;
+  left: calc(50% - 150px);
+  width: 300px;
+  z-index: 1;
+  border: 1px #333399 solid;
+}
+.PopUp > div {
+  display: flex;
+  flex-direction: column;
+}
+.PopUp > div label {
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 1px #d5d5f0 solid;
+  height: 30px;
+  align-items: center;
+  color: #6666cc;
+  padding: 0px 5px;
+}
+.PopUp > div label p {
+  font-family: "Regular";
+  margin: 0px;
+  font-size: 10pt;
+}
+.PopUp > div label span {
+  margin-left: 5px;
+}
+.PopUp > div label .answr {
+  margin-right: auto;
+  font-family: "bold";
+}
+.PopUp > div label select {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: 150px;
+  margin: auto auto auto 0px;
+  text-align: center;
+  font-family: "Regular" !important;
+  font-size: 10pt;
+  background: #f7f7fc;
+  color: #333399;
+}
+.PopUp > div label select:focus {
+  outline: 2px #333399 solid;
+}
+.PopUp button {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  width: 60px;
+  height: 20px;
+  font-size: 8pt;
+  font-family: "Regular";
+  margin: 8px;
+}
+
+.Menu {
+  display: flex;
+  flex-direction: column;
+  border: 1px #333399 solid;
+}
+.Menu .MnTtl {
+  background: #d5d5f0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.Menu .MnTtl p {
+  margin: 0px;
+  color: #fff;
+  font-family: "Regular";
+}
+.Menu .MnTtl .cnt {
+  background-color: #d5d5f0;
+  flex-grow: 2;
+  color: #333399;
+  text-align: right;
+  padding: 0px 6px;
+}
+.Menu .MnTtl input {
+  width: 60%;
+  height: 14px;
+  margin-left: 4px;
+  background-color: #f5f5fa;
+  border: 0px;
+  border-radius: 3px;
+  font-family: "Regular";
+  font-size: 9pt;
+  text-align: center;
+}
+.Menu .MnTtl input:focus {
+  outline: 1px #6666cc solid;
+}
+.Menu .MnOpn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 200px;
+}
+.Menu .MnOpn button {
+  background: transparent;
+  border: 0px;
+  font-family: "SemiBold";
+  font-size: 10pt;
+  color: #333399;
+  margin: 0px;
+  cursor: pointer;
+}
+.Menu .MnOpn .MainBtn {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 5px;
+  align-items: center;
+  margin: 3px 0px;
+}
+.Menu .MnOpn .MainBtn img {
+  height: 12px;
+}
+.Menu .MnOpn .SubBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 35px;
+  margin-bottom: 10px;
+}
+.Menu .MnOpn .SubBtns .limit button {
+  color: #9292c9;
+}
+.Menu .MnCls {
+  flex-grow: 5;
+  background: #333399;
+}
+
+.Desk {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+}
+.Desk .DM {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  width: 100%;
+  padding-bottom: 30px;
+  flex: 5;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #333399;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+.Header .Revival {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.Header .Revival .notifiction {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 10px;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  transition: 0.5s;
+  overflow: hidden;
+  cursor: pointer;
+}
+.Header .Revival .notifiction .Description {
+  display: none;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+.Header .Revival .notifiction .Description p {
+  font-family: "Regular";
+  font-size: 10pt;
+  margin: 0px 3px 0px 3px;
+}
+.Header .Revival .notifiction .number {
+  margin: 0px 2px 3px 2px;
+}
+.Header .Revival .notifiction .ico {
+  font-size: 10pt;
+  vertical-align: bottom;
+  margin: 0px 0px 0px 0px;
+  position: relative;
+}
+.Header .Revival .notifiction:hover {
+  width: 160px;
+}
+.Header .Revival .notifiction:hover .number {
+  display: none;
+}
+.Header .Revival .notifiction:hover .ico {
+  font-size: 14pt;
+}
+.Header .Revival .notifiction:hover .Description {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.Header .Revival .black p {
+  color: #000000;
+}
+.Header .Revival .Red p {
+  color: #993333;
+}
+.Header .Revival .Oreng p {
+  color: #e08610;
+}
+.Header .Revival .Yellow p {
+  color: #ebc700;
+}
+.Header .ttlr {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.Header .ttlr .nm {
+  display: flex;
+  flex-direction: column;
+}
+.Header .ttlr .nm > h1 {
+  font-family: "IranNastaliq";
+  color: #fff;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 20px 0px 0px;
+  font-size: 17pt;
+}
+.Header .ttlr .nm > h2 {
+  font-family: "Regular";
+  color: #fff;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 20px 0px 0px;
+  font-size: 8pt;
+}
+.Header .ttlr .brdrVrtcl {
+  border-left: 1px #fff solid;
+  margin: 0px 20px;
+  height: 50px;
+}
+.Header .ttlr > div {
+  display: flex;
+  flex-direction: column;
+}
+.Header .ttlr > div > h1 {
+  margin: 0px;
+  font-family: "Medium";
+  color: #fff;
+  font-size: 12pt;
+}
+.Header .ttlr > div > div {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.Header .ttlr > div > div p {
+  margin: 0px;
+  font-family: "Regular";
+  font-size: 9pt;
+  color: #d5d5f0;
+}
+.Header .btnhdr {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.Header .btnhdr .brdrVrtcl {
+  border-left: 1px #fff solid;
+  margin: 0px 10px;
+  height: 40px;
+}
+.Header .btnhdr .ttlHd {
+  margin: 0px 0px 0px 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.Header .btnhdr .ttlHd p {
+  margin: 0px 3px;
+  color: #d5d5f0;
+  font-size: 9pt;
+}
+.Header .btnhdr .BtnHd {
+  margin: 0px 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Header .btnhdr .BtnHd span {
+  font-size: 16pt;
+  margin: 0px;
+  color: #fff;
+}
+.Header .btnhdr .BtnHd button {
+  cursor: pointer;
+  background: transparent;
+  border: 0px;
+  color: #fff;
+  font-family: "Regular";
+  font-size: 10pt;
+  margin: 0px;
+  padding: 2px;
+}
+.Header .btnhdr .MnUsr {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  font-family: "Medium";
+  font-size: 10pt;
+  margin: 0px 10px;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  direction: rtl;
+  width: 100px;
+  cursor: pointer;
+}
+.Header .btnhdr .MnUsr .Notification {
+  font-size: 15pt;
+  color: #333399;
+  animation: notif 0.5s 0s alternate-reverse infinite;
+  margin: 0px 5px;
+}
+@keyframes notif {
+  to {
+    color: #fff;
+  }
+}
+.Header .btnhdr .MnUsr img {
+  width: 10px;
+  height: 8px;
+  margin: 0px 0px 0px 8px;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 35px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 0px;
+  box-shadow: 0px 0px 7px -1px #9292c9;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb p {
+  padding: 5px 10px 5px 18px;
+  margin: 0px;
+  text-align: right;
+  color: #333399;
+  border-radius: 5px;
+  font-size: 9pt;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb p:hover {
+  background: #9292c9;
+  color: #fff;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb > div {
+  border-radius: 5px;
+}
+.Header .btnhdr .MnUsr:hover .MnUsr-Sb > div:hover {
+  background: #9292c9;
+  color: #fff;
+}
+.Header .btnhdr .MnUsr .MnUsr-Sb {
+  display: none;
+}
+
+.HomePage {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(36, 150, 211, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.HomePage > img {
+  width: 100%;
+  z-index: 0;
+  opacity: 0.25;
+}
+.HomePage .brd {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  right: min(250px, 20%);
+}
+.HomePage .brd .logo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+}
+.HomePage .brd .logo img {
+  position: absolute;
+}
+.HomePage .brd .logo .prt {
+  opacity: 0;
+}
+.HomePage .brd .logo .prt1 {
+  animation: pt1 3s 0s alternate infinite forwards;
+}
+.HomePage .brd .logo .prt2 {
+  animation: pt1 3s 0.5s alternate infinite forwards;
+}
+.HomePage .brd .logo .prt3 {
+  animation: pt1 3s 1s alternate infinite forwards;
+}
+.HomePage .brd .logo .prt4 {
+  animation: pt1 3s 1.5s alternate infinite forwards;
+}
+@keyframes pt1 {
+  20% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 100;
+  }
+  70% {
+    opacity: 100;
+  }
+  85% {
+    opacity: 0;
+  }
+}
+.HomePage .brd h1 {
+  font-family: "bold";
+  width: 270px;
+  text-align: center;
+  font-size: 13pt;
+  color: #fff;
+  padding: 6px;
+  background: #333399;
+  border-radius: 8px;
+}
+.HomePage .brd a {
+  font-family: "black";
+  color: #333399;
+  font-size: 13pt;
+  text-decoration: none;
+}
+.HomePage .FrmLgin {
+  position: absolute;
+  left: 15%;
+  z-index: 0;
+}
+.HomePage .inpnmb {
+  display: flex;
+  flex-direction: column;
+  border: 1px #fff solid;
+  border-radius: 15px;
+  padding: 15px 55px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.HomePage .inpnmb h1 {
+  font-family: "Medium";
+  text-align: center;
+  font-size: 12pt;
+  color: #333399;
+  margin: 30px 0px;
+  padding: 0px;
+}
+.HomePage .inpnmb p {
+  font-family: "bold";
+  color: #333399;
+  font-size: 10pt;
+  text-align: center;
+  margin: 2px 0px;
+  padding: 0px;
+  text-align: center;
+}
+.HomePage .inpnmb > div {
+  border-bottom: 1px #fff solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.HomePage .inpnmb > div input {
+  border: 0px;
+  height: 28px;
+  width: 220px;
+  margin: 12px 0px;
+  border-radius: 5px;
+  font-family: "Regular";
+  text-align: center;
+}
+.HomePage .inpnmb > div input:focus {
+  outline: 2px #333399 solid;
+}
+.HomePage .inpnmb > div .captcha {
+  width: 220px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch;
+  padding: 0px;
+}
+.HomePage .inpnmb > div .captcha img {
+  width: 80%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.HomePage .inpnmb > div .captcha button {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 0px;
+  width: 20%;
+  margin: 0px;
+  background: #eaeaf5;
+  color: #333399;
+  font-family: "Regular";
+  cursor: pointer;
+}
+.HomePage .inpnmb > div .captcha button:focus {
+  outline: 2px #333399 solid;
+}
+.HomePage .inpnmb > div > button {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  margin: 15px;
+}
+.HomePage .inpnmb .inpcd {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.HomePage .inpnmb .inpcd p {
+  font-size: 10pt;
+  cursor: pointer;
+}
+.HomePage .inpnmb .inpcd > div {
+  display: flex;
+  flex-direction: row;
+}
+.HomePage .inpnmb .inpcd > div p {
+  margin: 5px;
+  color: #6666cc;
+}
+
+.LoaderConteiner {
+  position: fixed;
+  top: calc(50% - 65px);
+  left: calc(50% - 65px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  background: rgba(234, 234, 245, 0.6);
+  padding: 25px 35px;
+  border-radius: 20px;
+}
+.LoaderConteiner .lds-facebook div {
+  background: #6666cc !important;
+}
+
+.TblClms-check-square {
+  background-color: #263bb0;
+}
+
+.TblClms {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #9c9c9c;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.PgTabs {
+  width: calc(100% - 200px);
+  position: relative;
+  display: flex;
+}
+.PgTabs .react-tabs {
+  width: 100%;
+}
+.PgTabs .react-tabs .TbsDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px 10px;
+  background: #d5d5f0;
+  border: 1px #333399 solid;
+  border-bottom: 0px;
+  height: 20px;
+  border-radius: 8px 8px 0px 0px;
+}
+.PgTabs .react-tabs .TbsDiv button {
+  height: 15px;
+  background: transparent;
+  border: 0px;
+  font-size: 10pt;
+  font-family: "Regular";
+  color: #333399;
+  cursor: pointer;
+}
+.PgTabs .react-tabs .TbsDiv p {
+  font-size: 10pt;
+  font-family: "Regular";
+  color: #333399;
+  margin: 0px;
+}
+.PgTabs .react-tabs .react-tabs__tab {
+  bottom: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.PgTabs .react-tabs .react-tabs__tab-list {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 22px;
+  border-top: 1px #333399 solid;
+  background: #d5d5f0;
+  padding: 0px 5px 0px 0px;
+  margin: 0px 15px 0px 0px;
+}
+.PgTabs .react-tabs .react-tabs__tab-panel {
+  width: 100%;
+}
+.PgTabs .react-tabs .react-tabs__tab--selected {
+  border-radius: 0px;
+  background: #d5d5f0;
+  border: 0px;
+}
+.PgTabs .react-tabs .react-tabs__tab--selected .TbsDiv {
+  background: #f7f7fc;
+}
+
+.PgLine {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px #333399 solid;
+  width: 100%;
+}
+.PgLine .TtlHeader {
+  border: 1px #333399 solid;
+  background: #d5d5f0;
+}
+.PgLine .TtlHeader h1 {
+  color: #333399;
+  font-family: "Regular";
+  font-size: 11pt;
+  padding: 0px 15px 0px 0px;
+  margin: 0px;
+  text-align: right;
+}
+.PgLine .OnlyForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.PgLine .OnlyForm .alarm {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.PgLine .OnlyForm .alarm > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.PgLine .OnlyForm .alarm h1 {
+  font-family: "bold";
+  font-size: 25pt;
+  color: #993333;
+  margin: 10px 20px 10px 25px;
+  padding: 0px 10px 0px 0px;
+  border-right: 3px #993333 solid;
+  width: 40px;
+  text-align: right;
+}
+.PgLine .OnlyForm .alarm h2 {
+  font-family: "medium";
+  font-size: 12pt;
+  color: #333399;
+  text-align: right;
+  margin: 0px;
+}
+.PgLine .OnlyForm .alarm p {
+  font-family: "Regular";
+  font-size: 10pt;
+  color: #6666cc;
+  text-align: right;
+  margin: 0px;
+}
+.PgLine .OnlyForm .warrning {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.PgLine .OnlyForm .warrning > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.PgLine .OnlyForm .warrning h1 {
+  font-family: "bold";
+  font-size: 25pt;
+  color: #ada027;
+  margin: 10px 20px 10px 25px;
+  padding: 0px 10px 0px 0px;
+  border-right: 3px #ada027 solid;
+  width: 40px;
+  text-align: right;
+}
+.PgLine .OnlyForm .warrning h2 {
+  font-family: "medium";
+  font-size: 12pt;
+  color: #333399;
+  text-align: right;
+  margin: 0px;
+}
+.PgLine .OnlyForm .warrning p {
+  font-family: "Regular";
+  font-size: 10pt;
+  color: #6666cc;
+  text-align: right;
+  margin: 0px;
+}
+.PgLine .OnlyForm .Feild {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  border: 1px #333399 solid;
+  border-right: 0px;
+}
+.PgLine .OnlyForm .Feild .FldName select {
+  width: 180px;
+}
+.PgLine .OnlyForm .Feild label {
+  border: 1px #d5d5f0 solid;
+  border-top: 0px;
+  border-right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 210px;
+  justify-content: center;
+}
+.PgLine .OnlyForm .Feild label p {
+  color: #333399;
+  font-family: "Regular";
+  margin: 5px 15px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.PgLine .OnlyForm .Feild label input, .PgLine .OnlyForm .Feild label select {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: 100px;
+  margin: 0px 10px 12px 0px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+}
+.PgLine .OnlyForm .Feild label input:focus, .PgLine .OnlyForm .Feild label select:focus {
+  outline: 2px #333399 solid;
+}
+.PgLine .OnlyForm .Feild label .inpMrg {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.PgLine .OnlyForm .Feild label .inpMrg > span {
+  color: #333399;
+  font-family: "black";
+  margin: 5px 15px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.PgLine .OnlyForm .Feild label .inpMrg .del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20pt;
+}
+.PgLine .OnlyForm .rowly {
+  flex-direction: column;
+  direction: rtl;
+}
+.PgLine .OnlyForm .rowly label {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.PgLine .OnlyForm .rowly label div {
+  display: flex;
+  flex-direction: row !important;
+}
+.PgLine .OnlyForm .rowly label div span {
+  font-family: "Regular" !important;
+}
+.PgLine .OnlyForm .rowly .ttl {
+  justify-content: center;
+}
+.PgLine .OnlyForm .rowly .ttl p {
+  margin: 0px 15px;
+}
+.PgLine .OnlyForm button {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  margin: 20px auto;
+  width: 150px;
+}
+.PgLine .FrmTbl .FormPlus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  position: absolute;
+  background: #fff;
+  width: max(50%, 300px);
+  min-height: auto;
+  max-height: max(50%, 400px);
+  z-index: 2;
+  right: calc(50% - max(25%, 150px));
+  top: 10px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  overflow: scroll;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus::-webkit-scrollbar {
+  background: #f7f7fc;
+  width: 5px;
+  height: 8px;
+  border-radius: 5px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus::-webkit-scrollbar-thumb {
+  background: #d5d5f0;
+  width: 5px;
+  height: 8px;
+  border-radius: 5px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label {
+  border: 1px #d5d5f0 solid;
+  border-top: 0px;
+  border-right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: calc(50% - 21px);
+  padding: 0px 10px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label button {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  height: 20px;
+  margin: 7px auto;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label button a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 8pt;
+  font-family: "Regular";
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label .subLbl {
+  display: flex;
+  flex-direction: row;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label .subLbl span {
+  color: #333399;
+  font-family: "Thin";
+  margin: 5px 2px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label p {
+  color: #333399;
+  font-family: "Regular";
+  margin: 5px 15px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label input, .PgLine .FrmTbl .FormPlus .FldPlus label select {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: calc(70% - 12px);
+  margin: 0px 10px 12px 0px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label input:focus, .PgLine .FrmTbl .FormPlus .FldPlus label select:focus {
+  outline: 2px #333399 solid;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label input[type=file] {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: 100px;
+  margin: 0px 10px 12px 0px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 5pt;
+  background: #f7f7fc;
+  width: 160px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label input[type=file]:focus {
+  outline: 2px #333399 solid;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label input[type=file]::-webkit-file-upload-button {
+  background: #333399;
+  height: 100%;
+  width: 40%;
+  border: 0px;
+  font-size: 5pt;
+  font-family: "Thin";
+  color: #fff;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label .inpMrg {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label .inpMrg > span {
+  color: #333399;
+  font-family: "black";
+  margin: 5px 15px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus label .inpMrg input {
+  width: 80px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus .Add-Field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus .Add-Field div {
+  margin: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus .Add-Field div span {
+  font-size: 20pt;
+  color: #333399;
+  margin: 0px;
+}
+.PgLine .FrmTbl .FormPlus .FldPlus .Add-Field div p {
+  text-align: center;
+  margin: 0px;
+}
+.PgLine .FrmTbl .FormPlus .clander {
+  overflow: visible;
+}
+.PgLine .FrmTbl .FormPlus .BtnBx {
+  display: flex;
+  flex-direction: row;
+}
+.PgLine .FrmTbl .FormPlus .BtnBx .AplBtn {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  margin: 10px 20px;
+}
+.PgLine .FrmTbl .FormPlus .BtnBx .CnlBtn {
+  background: #333399;
+  color: #fff;
+  border: 0px;
+  border-radius: 15px;
+  font-family: "black";
+  text-align: center;
+  font-size: 9pt;
+  height: 28px;
+  width: 70px;
+  cursor: pointer;
+  margin: 10px 20px;
+  background: #993333;
+}
+
+.TblPlus .TblTools {
+  display: flex;
+  flex-direction: row-reverse;
+  background: #d5d5f0;
+  border-top: 1px #333399 solid;
+}
+.TblPlus .TblTools .RightTls, .TblPlus .TblTools .LeftTls {
+  display: flex;
+  flex-direction: row;
+}
+.TblPlus .TblTools .RightTls {
+  margin: 0px auto 0px 10px;
+  flex-wrap: wrap;
+}
+.TblPlus .TblTools .RightTls span {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  color: #333399;
+  font-size: 15pt;
+}
+.TblPlus .TblTools .RightTls span > p {
+  font-family: "Regular";
+  font-size: 9pt;
+  margin: 0px;
+}
+.TblPlus .TblTools .RightTls span:hover {
+  background-color: #9292c9;
+}
+.TblPlus .BtnTools {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.TblPlus .BtnTools p {
+  margin: 0px;
+  font-family: "Regular";
+  color: #333399;
+  margin-left: 10px;
+}
+.TblPlus .BtnTools img {
+  height: 20px;
+  margin: 0px 10px;
+}
+.TblPlus .BtnTools select {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: 150px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+  color: #333399;
+}
+.TblPlus .BtnTools select:focus {
+  outline: 2px #333399 solid;
+}
+.TblPlus .TlsDwnld {
+  align-items: center;
+  margin-left: 15px;
+}
+.TblPlus .TlsDwnld span {
+  font-family: "Regular";
+  color: #333399;
+  font-family: 12pt;
+}
+.TblPlus .TlsDwnld:hover {
+  background: #9292c9;
+}
+
+.tabulator {
+  border: 1px #333399 solid;
+}
+.tabulator .tabulator-selected {
+  background-color: #333399 !important;
+  color: #eaeaf5;
+}
+.tabulator .tabulator-data-tree-control {
+  background: #fff !important;
+  border: 1px #9292c9 solid !important;
+}
+.tabulator .tabulator-data-tree-control-expand {
+  background: #9292c9 !important;
+}
+.tabulator .tabulator-data-tree-control-expand::after {
+  background: #9292c9 !important;
+}
+.tabulator .TblBtnDynEdt {
+  font-family: "black";
+}
+.tabulator .tabulator-header {
+  color: #333399;
+  font-family: "Regular";
+  background: #d5d5f0;
+}
+.tabulator .tabulator-header .tabulator-col {
+  background: #d5d5f0;
+  border: 0px #b4b4da solid;
+  border-left: 1px #b4b4da solid;
+}
+.tabulator .tabulator-header .tabulator-col:hover {
+  background: #eaeaf5 !important;
+}
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter {
+  width: 70%;
+  margin: auto auto;
+}
+.tabulator .tabulator-header .tabulator-col input {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+}
+.tabulator .tabulator-table .tabulator-row-even {
+  background: #eaeaf5;
+}
+.tabulator .tabulator-table .tabulator-row:hover {
+  background: #b4b4da !important;
+}
+.tabulator .tabulator-table .tabulator-cell {
+  font-family: "Regular";
+}
+
+.tabulator .tabulator-footer .tabulator-calcs-holder .tabulator-row {
+  background: #eaeaf5 !important;
+}
+
+.tabulator-footer-contents {
+  background: #d5d5f0;
+}
+.tabulator-footer-contents label {
+  color: #333399;
+}
+
+.Berif {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto 0px;
+}
+.Berif .BerifUp .BerifRight .Icn {
+  border-top-right-radius: 360px;
+}
+.Berif .BerifUp .BerifLeft .Icn {
+  border-top-left-radius: 360px;
+}
+.Berif .BerifDown .BerifRight .Icn {
+  border-bottom-right-radius: 360px;
+}
+.Berif .BerifDown .BerifLeft .Icn {
+  border-bottom-left-radius: 360px;
+}
+.Berif .BerifRight {
+  border-bottom-right-radius: 90px;
+  border-top-right-radius: 90px;
+  flex-direction: row-reverse;
+  width: 550px;
+  margin-right: auto;
+}
+.Berif .BerifRight .Context {
+  text-align: right;
+}
+.Berif .BerifRight .Context h1 {
+  margin: 20px 60px 10px 0px;
+}
+.Berif .BerifRight .Context p {
+  margin: 0px 80px 0px 0px;
+}
+.Berif .BerifLeft {
+  border-bottom-left-radius: 90px;
+  border-top-left-radius: 90px;
+  flex-direction: row;
+  width: 550px;
+  margin-left: auto;
+}
+.Berif .BerifLeft .Context {
+  text-align: right;
+}
+.Berif .BerifLeft .Context h1 {
+  margin: 20px 0px 10px 60px;
+}
+.Berif .BerifLeft .Context p {
+  margin: 0px 30px 0px 80px;
+}
+.Berif > div {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 85%;
+}
+.Berif > div > div {
+  margin: 10px;
+  background: #eaeaf5;
+  width: 50%;
+  height: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+.Berif > div > div .Context h1 {
+  font-family: "Medium";
+  font-size: 11pt;
+  color: #333399;
+}
+.Berif > div > div .Context p {
+  font-family: "Regular";
+  font-size: 11pt;
+  color: #333399;
+}
+.Berif > div > div .Icn {
+  height: 180px;
+  width: 180px;
+  background: #333399;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.Berif > div > div .Icn span {
+  font-size: 35pt;
+  color: #fff;
+  text-align: center;
+}
+.Berif .Cntr {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  background: #fff;
+  z-index: 5;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Berif .Cntr span {
+  font-size: 30pt;
+  color: #333399;
+}
+.Berif .Cntr p {
+  font-family: "Medium";
+  font-size: 12pt;
+  color: #333399;
+  margin: 0px;
+}
+
+.DshBrd {
+  display: flex;
+  flex-direction: column;
+}
+.DshBrd .TL {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background: #d5d5f0;
+  border-bottom: 1px #333399 solid;
+}
+.DshBrd .TL label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin: 2px 10px;
+}
+.DshBrd .TL label p {
+  margin: 0px;
+  font-family: "Regular";
+  color: #333399;
+}
+.DshBrd .TL label select {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 20px;
+  width: 150px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+  color: #333399;
+}
+.DshBrd .TL label select:focus {
+  outline: 2px #333399 solid;
+}
+.DshBrd .RW {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0px;
+  height: 300px;
+  width: 100%;
+  border-bottom: 1px #333399 solid;
+  align-items: stretch;
+}
+.DshBrd .RW .Title {
+  font-family: "bold";
+  font-size: 12pt;
+  color: #eaeaf5;
+  margin: 0px;
+  background: rgba(51, 51, 153, 0.7);
+  writing-mode: vertical-rl;
+  text-align: center;
+}
+.DshBrd .RW .BX {
+  flex: 1;
+  border-right: 1px #6666cc solid;
+  display: flex;
+  flex-direction: column;
+}
+.DshBrd .RW .BX h1 {
+  font-family: "Regular";
+  font-size: 11pt;
+  color: #333399;
+  text-align: center;
+  margin: 0px;
+  justify-self: start;
+}
+.DshBrd .RW .BX > .Field {
+  padding-left: 15px;
+}
+.DshBrd .RW .BX > .Field label {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 25px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.DshBrd .RW .BX > .Field label p {
+  font-family: "Regular";
+  color: #333399;
+  font-size: 10pt;
+  margin: 0px;
+}
+.DshBrd .RW .BX > .Field label select {
+  border: 0px;
+  font-family: "Regular";
+  font-size: 10pt;
+  color: #6666cc;
+  border-bottom: 0px #333399 solid;
+  margin: 0px;
+  width: 75px;
+}
+.DshBrd .RW .BX > .CHR {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+.DshBrd .RW .BX > .CHR > div {
+  width: 50%;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL {
+  display: flex;
+  flex-direction: column;
+  margin: auto 5px;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL > div {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 4px 0px;
+  border-style: solid;
+  border-width: 0px;
+  border-bottom-width: 1px;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL > div .group {
+  flex: 3;
+  text-align: right;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL > div .rate {
+  flex: 1;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL > div .amount {
+  flex: 2;
+}
+.DshBrd .RW .BX > .CHR .CHRTBL > div p {
+  font-family: "Regular";
+  font-size: 9pt;
+  margin: 0px;
+}
+.DshBrd .RW .BX > .DIS {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.DshBrd .RW .BX > .DIS .BLD {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.DshBrd .RW .BX > .DIS .BLD > div span {
+  font-family: "Regular";
+  font-size: 12pt;
+  text-align: center;
+  color: #333399;
+}
+.DshBrd .RW .BX > .DIS .BLD > div > p {
+  margin: auto 0px;
+  font-family: "bold";
+  font-size: 30pt;
+  text-align: center;
+}
+.DshBrd .RW .BX > .DIS .BLD > div > p.pos {
+  color: #339933;
+}
+.DshBrd .RW .BX > .DIS .BLD > div > p.neg {
+  color: #993333;
+}
+.DshBrd .RW .BX > .DIS .DTL {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.DshBrd .RW .BX > .DIS .DTL > div {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+.DshBrd .RW .BX > .DIS .DTL > div > p {
+  font-family: "Regular";
+  font-size: 11pt;
+  color: #333399;
+  margin: 0px;
+}
+.DshBrd .RW .BX > .DIS .DTL > div > p.TT {
+  text-align: right;
+}
+.DshBrd .RW .BX > .DIS .DTL > div > p.NM {
+  text-align: left;
+}
+
+.Footer {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  bottom: 0px;
+  background: #333399;
+  height: 35px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.Footer label {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.Footer label p {
+  color: #fff;
+  font-family: "bold";
+  margin: 5px 15px 5px 0px;
+  font-size: 10pt;
+  text-align: right;
+}
+.Footer label .InpBsc {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 16px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+  margin-right: 10px;
+  width: 100px;
+  color: #333399;
+}
+
+.NoAccess {
+  display: flex;
+  flex-direction: column;
+  margin: 55px 0px 0px 0px;
+}
+.NoAccess span {
+  text-align: center;
+  font-family: "bold";
+  font-size: 60pt;
+  color: #993333;
+  margin: 0px;
+}
+.NoAccess h1 {
+  text-align: center;
+  font-family: "bold";
+  font-size: 17pt;
+  color: #993333;
+  margin: 0px;
+}
+
+.MnLd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MnLd .lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.MnLd .lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #9292c9;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.MnLd .lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.MnLd .lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.MnLd .lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.Fld-FT {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100%;
+}
+.Fld-FT label {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0px 15px;
+}
+.Fld-FT label p {
+  margin: 0px;
+  font-family: "Regular";
+  color: #333399;
+}
+.Fld-FT label .InpBsc {
+  border: 1px #9292c9 solid;
+  border-radius: 5px;
+  height: 16px;
+  text-align: center;
+  font-family: "Regular";
+  font-size: 10pt;
+  background: #f7f7fc;
+  margin-right: 10px;
+  width: 90px;
+  color: #333399;
+}
+.Fld-FT label .rmdp-wrapper {
+  font-family: "Regular";
+}
+.Fld-FT label .rmdp-header-values {
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=style.css.map */
