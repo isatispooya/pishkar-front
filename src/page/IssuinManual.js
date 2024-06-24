@@ -25,6 +25,7 @@ const IssuinManual = () =>{
     const [edit, setEdit] = useState('add')
     const [loaderAct, setLoaderAct] = useState(false)
     const [dataDel ,setDataDel] = useState(false)
+    window.XLSX = XLSX;
     
     if(Dfissuing!=null){
         var table = new Tabulator("#data-table", {

@@ -1,29 +1,41 @@
-import { useState } from "react"
-import Alarm from "../../componet/Alarm"
 import { BsFileEarmarkSpreadsheetFill, BsFillFilePdfFill } from "react-icons/bs"
 import { IoInformationCircleOutline, IoRefreshSharp } from "react-icons/io5"
-import { getCookie } from "../../componet/cookie"
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import XLSX from 'xlsx/dist/xlsx.full.min.js';
 import { exportPdf } from "../../componet/exportPdf"
-import axios from "axios"
-import { OnRun } from "../../config/config"
+import { useState } from "react";
+import axios from "axios";
+import { OnRun } from "../../config/config";
+import { getCookie } from "../../componet/cookie";
+
+import "react-multi-date-picker/styles/layouts/mobile.css"
+
+import DatePicker from "react-multi-date-picker"
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import Alarm from "../../componet/Alarm";
 
 
-const BalanceCustomer = () =>{
-    const [msg, setMsg] = useState('')
 
+const DocAccounting = () => {
+    const [date, setDate] = useState(null)
     const [df, setDf] = useState(null)
     const LginKy = getCookie('LginKy')
+    const [msg, setMsg] = useState('')
+
     window.XLSX = XLSX;
 
-
-    const GetDf = () =>{
-        axios.post(OnRun+'/coustomer/balance',{ cookie: LginKy })
-        .then(response=>{
-            console.log(response.data)
-        })
+    const GetDf = () => {
+        axios.post(OnRun + '/report/docaccounting', { cookie: LginKy, date:date})
+            .then(response => {
+                if (response.data.reply) {
+                    setDf(response.data.df)
+                } else {
+                    setMsg(response.data.msg)
+                }
+            })
     }
+
 
     if (df != null) {
         var table = new Tabulator("#data-table", {
@@ -59,9 +71,12 @@ const BalanceCustomer = () =>{
         })
     }
 
-    return(
+
+
+    return (
         <div className="PgLine">
             <Alarm msg={msg} smsg={setMsg}/>
+
             <div className="FrmTbl">
                 <div className="TblPlus">
                     <div className="TblTools">
@@ -82,6 +97,18 @@ const BalanceCustomer = () =>{
                             <div className="BtnTools">
                                 <span><IoInformationCircleOutline /><p>راهنما</p></span>
                             </div>
+                            <div className="Btndate">
+                                <DatePicker
+                                  headerOrder={["MONTH_YEAR", "LEFT_BUTTON", "RIGHT_BUTTON"]} 
+                                  monthYearSeparator="|"
+                                  className="rmdp-mobile"
+
+                                    calendar={persian}
+                                    locale={persian_fa}
+                                    value={date}
+                                    onChange={(dt) => setDate(dt)}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div id="data-table"></div>
@@ -89,7 +116,9 @@ const BalanceCustomer = () =>{
             </div>
         </div>
     )
+
 }
 
 
-export default BalanceCustomer
+
+export default DocAccounting
