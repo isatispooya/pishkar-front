@@ -48,6 +48,8 @@ import NoFee from '../page/Report/NoFee'
 import DashboardCunsoltant from '../page/Report/DashboardCunsoltant'
 import SendSmsRevival from '../page/Customer/SendSmsRevival'
 import SettingSms from '../page/setting/settingSms'
+import FeePerFild from '../page/Report/FeePerFild'
+import DocAccounting from '../page/Report/DocAccounting'
 const Menu = (props) =>{
 
     const [Authorization, setAuthorization] = useState(null)
@@ -105,6 +107,7 @@ const Menu = (props) =>{
                     {id:5010,cls:'full',title:'افزودن فایل صدور',icon:'',element:<Issuing/>,key:''},
                     {id:5020,cls:'full',title:'افزودن دستی صدور',icon:'',element:<IssuinManual /> ,key:''},
                     {id:5030,cls:'full',title:'تخصیص مشاور صدور',icon:'',element:<AssingInssuing/>,key:''},
+                    {id:5040,cls:'full',title:'سند حسابداری',icon:'',element:<DocAccounting/>,key:''},
                 ]
             },
             {id:6000,title:'مدیریت صدور زندگی',icon:'',visible:false,
@@ -133,6 +136,7 @@ const Menu = (props) =>{
                 sub:[
                     {id:9010,cls:'full',title:'ماهانه خلاصه',icon:'',icon:'',element:<MonthlySalaryReportSummary /> ,key:''},
                     {id:9030,cls:'full',title:'ماهانه کلی',icon:'',icon:'',element:<MonthlySalaryReportFull /> ,key:''},
+                    {id:9040,cls:'full',title:'کارمزد ها به تفکیک',icon:'',icon:'',element:<FeePerFild /> ,key:''},
                 ]
             },
             {id:1100,title:'گزارشات مشاوران',icon:'',visible:false,

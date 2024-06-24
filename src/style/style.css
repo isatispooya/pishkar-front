@@ -1721,6 +1721,11 @@ body {
   }
 }
 
+.Btndate {
+  font-family: "Regular" !important;
+  font-size: 5px !important;
+}
+
 .Fld-FT {
   display: flex;
   flex-direction: row-reverse;
