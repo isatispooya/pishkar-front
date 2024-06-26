@@ -8,22 +8,38 @@ import XLSX from 'xlsx/dist/xlsx.full.min.js';
 import { exportPdf } from "../../componet/exportPdf"
 import axios from "axios"
 import { OnRun } from "../../config/config"
-
+import Loader from "../../componet/Loader"
 
 const BalanceCustomer = () =>{
     const [msg, setMsg] = useState('')
+    const [loaderAct, setLoaderAct] = useState(false)
+    const [Codemoeen, setCodemoeen] = useState("01")
 
     const [df, setDf] = useState(null)
     const LginKy = getCookie('LginKy')
     window.XLSX = XLSX;
 
 
-    const GetDf = () =>{
-        axios.post(OnRun+'/coustomer/balance',{ cookie: LginKy })
-        .then(response=>{
-            console.log(response.data)
+    const GetDf = () => {
+        setLoaderAct(true)
+        axios.post(OnRun + '/coustomer/balance', { cookie: LginKy,code:Codemoeen })
+            .then(response => {
+               
+        
+                setLoaderAct(false)
+                if (response.data.reply) {
+                    setDf(response.data.df)
+              
+
+                    
+                }
+                else {
+                    setMsg(response.data.msg)
+                }
+              
         })
     }
+ 
 
     if (df != null) {
         var table = new Tabulator("#data-table", {
@@ -38,29 +54,23 @@ const BalanceCustomer = () =>{
             layoutColumnsOnNewData: false,
             textDirection: "rtl",
             autoResize: false,
-            columns: [
-                { title: "کد", field: "code", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 40, headerFilter: "input" },
-                { title: "شرح", field: "discription", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 100, headerFilter: "input", },
-                { title: "بدهکار", field: "bede", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 40, headerFilter: "input", formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
-                { title: "بستانکار", field: "bestan", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 40, headerFilter: "input", formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
-                { title: "5", field: "1", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "6", field: "2", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "7", field: "3", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "8", field: "4", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "9", field: "4", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "10", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "11", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "12", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "13", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "14", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "15", field: "9", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 1,},
-                { title: "شرح لاتین", field: "latin", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 40, headerFilter: "input"},
+            columns: [{ title: "کد", field: "Acc_Code", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, headerFilter: "input" },
+                { title: "نام و نام خانوادگی", field: "Name", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 30, headerFilter: "input" },
+                { title: "بدهکار", field: "Bede", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "بستانکار", field: "Best", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: " مانده بدهکار", field: "balance_bede", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "مانده بستانکار", field: "balance_best", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "آتی", field: "LtnComm", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 10, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "مانده تعدیلی", field: "balanceAdjust", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "موبایل", field: "Mobile", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 10, headerFilter: "input" },
+               
             ],
         })
     }
-
+   
     return(
         <div className="PgLine">
+            <Loader enable={loaderAct} />
             <Alarm msg={msg} smsg={setMsg}/>
             <div className="FrmTbl">
                 <div className="TblPlus">
@@ -81,6 +91,24 @@ const BalanceCustomer = () =>{
                             </div>
                             <div className="BtnTools">
                                 <span><IoInformationCircleOutline /><p>راهنما</p></span>
+                            </div>
+                            <div className="BtnTools" >
+                                <p>کدمعین </p>
+
+                                <select  value={Codemoeen} onChange={(e) => setCodemoeen(e.target.value)}>
+                                                
+                                                    <option  value="01">01</option>
+                                                    <option  value="02">02</option>
+                                                    <option  value="03">03</option>
+                                                    <option  value="04">04</option>
+                                                    <option  value="05">05</option>
+                                                    <option  value="06">06</option>
+                                                    <option  value="07">07</option>
+                                                    <option  value="08">08</option>
+                                                    <option  value="09">09</option>
+                                                
+                                        
+                                    </select>
                             </div>
                         </div>
                     </div>

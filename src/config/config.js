@@ -1,5 +1,5 @@
 
-export const OnRun = 'http://127.0.0.1:5000' /*'http://127.0.0.1:5000'*/ /*https://bpis.fidip.ir  */
+export const OnRun = 'https://bpis.fidip.ir' /*'http://127.0.0.1:5000'*/ /*https://bpis.fidip.ir  */
 
 export const consultantDisable = [
     'گزارشات مشاوران - پرفراژ',
