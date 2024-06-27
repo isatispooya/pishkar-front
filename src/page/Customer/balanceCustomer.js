@@ -13,7 +13,7 @@ import Loader from "../../componet/Loader"
 const BalanceCustomer = () =>{
     const [msg, setMsg] = useState('')
     const [loaderAct, setLoaderAct] = useState(false)
-    const [Codemoeen, setCodemoeen] = useState("01")
+    const [Codemoeen, setCodemoeen] = useState("03")
 
     const [df, setDf] = useState(null)
     const LginKy = getCookie('LginKy')
@@ -54,12 +54,16 @@ const BalanceCustomer = () =>{
             layoutColumnsOnNewData: false,
             textDirection: "rtl",
             autoResize: false,
-            columns: [{ title: "کد", field: "Acc_Code", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, headerFilter: "input" },
+            dataTree:true,
+            dataTreeStartExpanded:false,
+            columns: [
+                { title: "کد", field: "Acc_Code", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, headerFilter: "input" },
                 { title: "نام و نام خانوادگی", field: "Name", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 30, headerFilter: "input" },
                 { title: "بدهکار", field: "Bede", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
                 { title: "بستانکار", field: "Best", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
                 { title: " مانده بدهکار", field: "balance_bede", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
                 { title: "مانده بستانکار", field: "balance_best", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
+                { title: "تاریخ", field: "date", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 10 },
                 { title: "آتی", field: "LtnComm", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 10, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
                 { title: "مانده تعدیلی", field: "balanceAdjust", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 15, formatter: function (cell) { return Number(cell.getValue()).toLocaleString() } },
                 { title: "موبایل", field: "Mobile", hozAlign: 'center', headerHozAlign: 'center', resizable: true, widthGrow: 10, headerFilter: "input" },
