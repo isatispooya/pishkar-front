@@ -109,8 +109,8 @@ const SettingSms = () => {
             position: toast.POSITION.BOTTOM_LEFT,
             className: "postive-toast",
           });
-          // Fetch the updated data after the apply
-          getSettingSms(); // Call this to update the UI with the new data
+        
+          getSettingSms(); 
         }
       })
       .catch((error) => {
