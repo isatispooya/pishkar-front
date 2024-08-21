@@ -25,8 +25,19 @@ const SettingSms = () => {
     registerdate: "",
   });
   const [listSend, setListSend] = useState([]);
+  const [bakance, setBakance] = useState({
+    from: 1000000,
+    to: null,
+    period: "weekly",
+    time: "20",
+  });
   const [selectedOption, setSelectedOption] = useState("");
-  const list = ["روزانه", "هفتگی", "ماهانه"];
+  const periodOptions = [
+    { label: "روزانه", value: "daily" },
+    { label: "هفتگی", value: "weekly" },
+    { label: "ماهانه", value: "monthly" },
+  ];
+  const [period, setPeriod] = useState(periodOptions);
 
   const addTren = () => {
     setListSend((prevList) => [
@@ -90,6 +101,7 @@ const SettingSms = () => {
       .post(OnRun + "/management/setsettingsms", {
         cookie: LginKy,
         listSend: listSend,
+        bakance: bakance,
       })
       .then((response) => {
         if (response.data.replay) {
@@ -97,7 +109,15 @@ const SettingSms = () => {
             position: toast.POSITION.BOTTOM_LEFT,
             className: "postive-toast",
           });
+          // Fetch the updated data after the apply
+          getSettingSms(); // Call this to update the UI with the new data
         }
+      })
+      .catch((error) => {
+        toast.error("خطا در بروز رسانی تنظیمات", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          className: "negative-toast",
+        });
       });
   };
 
@@ -105,9 +125,9 @@ const SettingSms = () => {
     axios
       .post(OnRun + "/management/getsettingsms", { cookie: LginKy })
       .then((response) => {
-        console.log(response.data);
         if (response.data.replay) {
           setListSend(response.data.df);
+          setBakance(response.data.bakance);
         }
       });
   };
@@ -161,7 +181,6 @@ const SettingSms = () => {
             })}
           </div>
           <button onClick={addTren}>افزودن</button>
-          <button onClick={apply}>ثبت</button>
         </div>
       </div>
       <div className="PgLine">
@@ -174,31 +193,50 @@ const SettingSms = () => {
             <label className="ttl">
               <p>حداقل مانده</p>
               <p>حداکثر مانده</p>
-              <p>ساعت</p>
+              <p>دوره ارسال</p>
+              <p>ساعت ارسال</p>
             </label>
             <label>
               <div className="inpMrg">
                 <input
                   type="number"
-                  onChange={(e) => updatePrevDay(e.target.value)}
+                  value={bakance.from}
+                  onChange={(e) =>
+                    setBakance({ ...bakance, from: e.target.value })
+                  }
                 />
               </div>
               <div className="inpMrg">
                 <input
                   type="number"
-                  onChange={(e) => updateTime(e.target.value)}
+                  value={bakance.to || ""}
+                  onChange={(e) =>
+                    setBakance({ ...bakance, to: e.target.value })
+                  }
                 />
               </div>
               <div className="inpMrg">
-                <select onChange={handleSelectChange}>
-                  {list.map((i, index) => {
-                    return (
-                      <option key={index} value={i}>
-                        {i}
-                      </option>
-                    );
-                  })}
+                <select
+                  value={bakance.period}
+                  onChange={(e) =>
+                    setBakance({ ...bakance, period: e.target.value })
+                  }
+                >
+                  {period.map((i, index) => (
+                    <option key={index} value={i.value}>
+                      {i.label}
+                    </option>
+                  ))}
                 </select>
+              </div>
+              <div className="inpMrg">
+                <input
+                  type="number"
+                  value={bakance.time}
+                  onChange={(e) =>
+                    setBakance({ ...bakance, time: e.target.value })
+                  }
+                />
               </div>
             </label>
           </div>
