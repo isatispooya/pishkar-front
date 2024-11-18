@@ -49,6 +49,7 @@ const AssingInssuing = () =>{
                 {title:"مورد بیمه", field:"مورد بیمه", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}},
                 {title:"تاریخ عملیات", field:"تاریخ عملیات", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"input"},
                 {title:"شماره بيمه نامه", field:"شماره بيمه نامه", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"input"},
+                {title:"شماره الحاقیه", field:"شماره الحاقیه", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"input"},
                 {title:"مبلغ کل حق بیمه", field:"مبلغ کل حق بیمه", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"input",formatter:function(cell){return Number(cell.getValue()).toLocaleString()},bottomCalc:'sum',bottomCalcFormatter:function(cell){return Number(cell.getValue()).toLocaleString()}},
                 {title:"cunsoltant",visible:false, field:"cunsoltant", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}},
                 {title:"مشاور", field:"cunsoltantName", hozAlign:'center',headerHozAlign:'center',resizable:true, widthGrow:4,headerFilter:"list",headerFilterParams:{valuesLookup:true, clearable:true},
