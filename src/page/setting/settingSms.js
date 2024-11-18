@@ -101,7 +101,7 @@ const SettingSms = () => {
       .post(OnRun + "/management/setsettingsms", {
         cookie: LginKy,
         listSend: listSend,
-        bakance: bakance,
+        balance: bakance,
       })
       .then((response) => {
         if (response.data.replay) {
@@ -125,9 +125,11 @@ const SettingSms = () => {
     axios
       .post(OnRun + "/management/getsettingsms", { cookie: LginKy })
       .then((response) => {
+        console.log(444, response.data);
+        
         if (response.data.replay) {
           setListSend(response.data.df);
-          setBakance(response.data.bakance);
+          setBakance(response.data.balance);
         }
       });
   };
